@@ -10,15 +10,15 @@ app.set("view engine","ejs");
 
 app.use(express.static("public"));
 
-const db=new pg.Client({
-    host:"localhost",
-    user:"postgres",
-    password:"Mahendra@7",
-    port:5432,
-    database:"booknotes"
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-db.connect();
+
+
 
 app.get("/",async(req,res)=>{
     try{
@@ -133,6 +133,7 @@ app.get("/sortbyrating",async(req,res)=>{
     }
 });
 
-app.listen(3000,()=>{
-    console.log("Server is running successfully on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running successfully on port ${PORT}`);
 });
