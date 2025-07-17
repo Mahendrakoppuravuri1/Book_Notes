@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Book Edit</title>
+    <link href="/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Custom Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a class="navbar-brand" href="/">Book Notes</a>
+        <ul class="navbar-menu">
+          <li><a href="/add">Add Book</a></li>
+          <li><a href="/edit">Edit Book</a></li>
+          <li><a href="/delete">Delete Book</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-content">
+        <h1 id="page_heading">Add your Book details here 😊</h1>
+        <form action="/edit/<%=books_details[0].id%>" method="POST" class="add-form">
+            <label for="book_title">Book Name:</label><br/>
+            <input type="text" id="book_title" name="book_title"value="<%= books_details[0].book_title %>" required/><br/><br/>
+
+            <label for="author">Author:</label><br/>
+            <input type="text" id="author" name="author" value="<%= books_details[0].author %>" required/><br/><br/>
+
+            <label for="date">Date:</label><br/>
+            <input type="text" id="date" name="date" value="<%= books_details[0].date_read %>" required/><br/><br/>
+
+            <label for="isbn">Isbn:</label><br/>
+            <input type="text" id="isbn" name="isbn" value="<%= books_details[0].isbn %>" required/><br/><br/>
+
+            <label for="rating">Rating:</label><br/>
+            <input type="text" id="rating" name="rating" value="<%= books_details[0].rating %>" required/><br/><br/>
+
+            <label for="summary" >Summary:</label><br/>
+            <textarea id="summary" name="summary" rows="4" cols="50" class="medium"><%= books_details[0].summary %></textarea><br/><br/>
+
+            <label for="notes" >My Notes:</label><br/>
+            <textarea id="notes" name="notes" rows="5" cols="60" class="large"><%= books_details[0].notes %></textarea><br/><br/>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Book Notes</title>
+    <link href="/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Custom Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a class="navbar-brand" href="/">Book Notes</a>
+        <ul class="navbar-menu">
+          <li><a href="/add">Add Book</a></li>
+          <li><a href="/edit">Edit Book</a></li>
+          <li><a href="/delete">Delete Book</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-content">
+        <h1 id="page_heading">Add your Book details here 😊</h1>
+        <form action="/add" method="POST" class="add-form">
+            <label for="book_title">Book Name:</label><br/>
+            <input type="text" id="book_title" name="book_title" required/><br/><br/>
+
+            <label for="author">Author:</label><br/>
+            <input type="text" id="author" name="author" required/><br/><br/>
+
+            <label for="date">Date:</label><br/>
+            <input type="text" id="date" name="date" required/><br/><br/>
+
+            <label for="isbn">Isbn:</label><br/>
+            <input type="text" id="isbn" name="isbn" required/><br/><br/>
+
+            <label for="rating">Rating:</label><br/>
+            <input type="text" id="rating" name="rating" required/><br/><br/>
+
+            <label for="summary" >Summary:</label><br/>
+            <input type="text" id="summary" name="summary" class="medium" required/><br/><br/>
+
+            <label for="notes" >My Notes:</label><br/>
+            <input type="text" id="notes" name="notes" class="large" required/><br/><br/>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+  </body>
+</html>

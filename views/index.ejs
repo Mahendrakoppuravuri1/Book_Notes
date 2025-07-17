@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Book Notes</title>
+    <link href="/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Custom Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a class="navbar-brand" href="/">Book Notes</a>
+        <ul class="navbar-menu">
+          <li><a href="/add">Add Book</a></li>
+          <li><a href="#" onclick="goToEdit()">Edit Book</a></li>
+          <li><a href="#", onclick="goToDelete()">Delete Book</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-content">
+      <h1 id="title">MAHENDRA KOPPURAVURI</h1>
+      <h2 id="heading">BOOKS I'VE READ</h2>
+      <p>
+        Tiny summary but detailed notes for each. Use the ISBN number to find it from your local library or anywhere else.
+        This page will constantly update as I read more, so bookmark it if you want to check back in a few months.
+        <br /><br />
+        Sorted with my top recommendations up top. Sort by <a href="/sortbytitle">title</a>, <a href="/sortbydate">newest</a>, or <a href="/sortbyrating">best</a>.
+      </p>
+      <hr />
+      <form id="editForm">
+      <% books_details.forEach(function(book) { %>
+  <div class="books">
+    <input type="radio" name="book_id" value="<%=book.id%>" required/>
+    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="cover page photo" />
+    <h3 class="book_title">
+      <a href="/detail/<%=book.id%>"><%= book.book_title.toUpperCase() %> - BY <%= book.author.toUpperCase() %></a>
+    </h3>
+    <p class="date">
+      DATE READ: <%= book.date_read %>. How strongly I recommend it: <%= book.rating %>/10
+    </p>
+    <p><%= book.summary %></p>
+  </div>
+<% }); %>
+  </form>
+
+    </div>
+
+    <script>
+      function goToEdit(){
+        const selected=document.querySelector("input[name=book_id]:checked");
+        if(!selected){
+          alert("Please select a book to edit");
+          return;
+        }
+        window.location.href=`/edit/${selected.value}`;
+      }
+
+      function goToDelete(){
+        const selected=document.querySelector("input[name=book_id]:checked");
+        if(!selected){
+          alert("Please select a book first");
+          return;
+        }
+        window.location.href=`/delete/${selected.value}`;
+      }
+    </script>
+  </body>
+</html>
